@@ -1,4 +1,4 @@
-package hra;
+package Mesta;
 
 public interface ZakladMesta {
 	

@@ -5,12 +5,12 @@ public class Kamenovo extends Mesto {
 		super(moje,b,d,k,m);
 	}
 	
-	public void vyroba(){
+	/*public void vyroba(){
 		this.zvysTovar(2,1);
 	}
 	public void predaj(){    //pridat moznost predaja hocicoho do hociktoreho mesta!!
 		if(this.getTovar(2)>5){
 			this.znizTovar(2, 5);
 		}
-	}
+	}*/
 }

@@ -1,4 +1,7 @@
 package Mesta;
+
+import Budovy.*;
+
 //import hra.*;
 
 public class Mesto implements ZakladMesta {
@@ -7,6 +10,7 @@ public class Mesto implements ZakladMesta {
 	private int[] cena={0,0,0,0};  //cena tovarov
 	private static int peniaze=50;  //zdroje hraca
 	private int[] vzdialenost={0,0,0,0}; //vzdialenost do ostatnych miest (v kolach)
+	private Budova[] budovy = new Budova[3];
 	
 	
 	//pridat budovy(?)
@@ -14,6 +18,7 @@ public class Mesto implements ZakladMesta {
 	
 	public Mesto(boolean moje, int b, int d, int k, int m){ //konstruktor
 		int i;
+		budovy[0]= new Tovaren(1);
 		setMoje(moje);
 		int[] a={b,d,k,m};
 		for(i=0;i<4;i++){
@@ -73,7 +78,7 @@ public class Mesto implements ZakladMesta {
 
 	
 	public void vyroba(){ //pre kazdy tip mesta specificke
-		
+		budovy[0].vyroba(this);
 	}
 	
 }

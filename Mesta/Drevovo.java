@@ -5,8 +5,4 @@ public class Drevovo extends Mesto {
 		super(moje,b,d,k,m);
 	}
 	
-	public void vyroba(){
-		this.zvysTovar(1,1);
-	}
-	
 }

@@ -5,12 +5,12 @@ public class Mramorovo extends Mesto {
 		super(moje,b,d,k,m);
 	}
 	
-	public void vyroba(){
+	/*public void vyroba(){
 		this.zvysTovar(3,1);
 	}
 	public void predaj(){    //pridat moznost predaja hocicoho do hociktoreho mesta!!
 		if(this.getTovar(3)>5){
 			this.znizTovar(3, 5);
 		}
-	}
+	}*/
 }
