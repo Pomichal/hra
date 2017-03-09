@@ -1,14 +1,15 @@
 package hra;
-//import java.util.Scanner;
 import Mesta.*;
 
 public class Turn {
+	private static int kolo=0;
 	
 	public static String vypis(Mesto[] Mesta){ //vypis tovaru pre kontrolu
 		int i,j;
+		String[] mena={"Bavlnovo", "Drevovo", "Kamenovo", "Mramorovo"};
 		String sprava="";
 		for(i=0;i<4;i++){  
-			sprava= sprava + Mesta[i].toString() +": ";
+			sprava= sprava + mena[i] +": ";
 			for(j=0;j<4;j++)
 				sprava= sprava + Mesta[i].getTovar(j) + ", ";
 				sprava= sprava + "\n";
@@ -16,51 +17,15 @@ public class Turn {
 		return sprava;
 	}
 	
-	public static void vypis(Vyprava[] vypravy){  //vypis vyprav
+	public static int Kolo(Mesto[] Mesta){
 		int i;
-		String smer;
-		for(i=0;vypravy[i]!=null;i++){  
-			if(vypravy[i].getMnozstvo()==0) smer="Vracujuci sa";
-			else smer="Na ceste s tovarom";
-			System.out.println((i+1) + ". vyprava, prichod o: " + vypravy[i].getPrichod() + " kol(o)" + ", smer:" + smer);
+		for(i=0;i<4; i++){
+			Mesta[i].vyroba();
 		}
+		return ++kolo;
 	}
 	
-/*	public static void main(String[] args) {
-		Mesto[] Mesta = new Mesto[4];         //pocet miest
-		Vyprava[] vypravy = new Vyprava[15];  //pocet karavanov
-		Nastav(Mesta,vypravy);
-		int i,turn, odpoved;
-		Scanner sc = new Scanner(System.in);
-		for(turn=1;turn<1000;turn++){       		//zaciatok kola
-			System.out.println(turn+". KOLO");
-			if(vypravy[0]!=null) vypravy[0].prichody(vypravy, Mesta);  //najde a vyhodnoti vypravy, co dorazili do ciela
-			//Turn.vypis(Mesta);
-			//Turn.vypis(vypravy);
-			for(i=0;Mesta[i].getMoje();i++){   //vyroba v ovladanych mestach
-				Mesta[i].vyroba();
-			}
-			System.out.println("Zdroje:" + Mesta[0].getPeniaze() + "zlatych");
-			odpoved=0;
-			while(odpoved!=2){
-			System.out.println("Co chcete robit? (0-vyslat vypravu(predaj), 1-vyslat vypravu(presun), 2-koniec kola)");
-			odpoved=sc.nextInt();
-				switch(odpoved){	
-				case 0:	Mesta[0].vyslatVypravu(vypravy, Mesta);  //moznost vyslat vypravu
-						break;
-				case 1: Mesta[0].presunTovaru(vypravy, Mesta);  //moznost presunut tovar
-						break;
-				}
-			}
-			System.out.println("koniec kola\n");
-			for(i=0;vypravy[i]!=null;i++){  //vypravy sa blizia k cielu
-				vypravy[i].znizPrichod();
-			}
-		}
-		sc.close();
-	}
-	*/
-	public static String Nastav(){  //nastavenie hodnot na zaciatok hry
+	public static Mesto[] Nastav(){  //nastavenie hodnot na zaciatok hry, TREBA OPRAVIT
 		int i;
 		Mesto[] Mesta = new Mesto[4];         //pocet miest
 		Vyprava[] vypravy = new Vyprava[15];  //pocet karavanov
@@ -79,7 +44,6 @@ public class Turn {
 		for(i=0;i<15;i++){
 			vypravy[i]=null;
 		}
-		return vypis(Mesta);
-		
+		return Mesta;
 	}
 }
